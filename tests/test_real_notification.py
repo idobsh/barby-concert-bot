@@ -4,7 +4,8 @@ import asyncio
 from redis_logic.redis_concert_cache import RedisConcertCache
 
 # Set your environment
-os.environ["TELEGRAM_BOT_TOKEN"] = "8463546157:AAFMVPzZ6lWqxsmPa7jc-6d2n5E_M8XZjiE"
+from dotenv import load_dotenv
+load_dotenv()
 os.environ["REDIS_HOST"] = "localhost"  # Your local Redis
 
 from aws_lambda.lambda_function import BarbyConcertNotifier
