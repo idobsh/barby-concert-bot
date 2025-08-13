@@ -1,0 +1,19 @@
+# Environment files
+.env
+*.log
+*.pem
+barby_scraper/
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# AWS
+.aws/
+
+# IDE
+.vscode/
+.idea/
