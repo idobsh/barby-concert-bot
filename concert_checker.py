@@ -200,3 +200,28 @@ def lambda_handler(event, context):
         return {"statusCode": 200, "body": json.dumps("Success!")}
     except Exception as e:
         logger.error(f"❌ Error during concert check: {e}")
+
+def main():
+    """Run the concert checker as a standalone script"""
+    print("🚀 Concert checker starting...")
+    
+    # Create mock event and context for lambda_handler
+    event = {"source": "ec2-cron"}
+    
+    class MockContext:
+        def get_remaining_time_in_millis(self):
+            return 300000  # 5 minutes
+    
+    context = MockContext()
+    
+    try:
+        # Call the existing lambda handler
+        result = lambda_handler(event, context)
+        print(f"✅ Concert checker completed: {result}")
+    except Exception as e:
+        print(f"❌ Concert checker failed: {e}")
+        import traceback
+        traceback.print_exc()
+
+if __name__ == "__main__":
+    main()
