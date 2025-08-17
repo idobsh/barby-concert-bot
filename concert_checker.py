@@ -103,14 +103,15 @@ class BarbyConcertNotifier:
 
     def format_single_concert_message(self, concert):
         """Format message for a single concert"""
-        artist = concert.get("showName", "Unknown Artist").strip()
-        title = concert.get("showTitle", "").strip()
-        short_title = concert.get("showShortTitle", "").strip()
-        date = concert.get("showDate", "")
-        time = concert.get("showTime", "")
-        price = concert.get("showPrice", "")
-        show_id = concert.get("showId", "")
-        seat_type = concert.get("showSeatType", "")
+        artist = concert.get('artist', 'Unknown Artist').strip()
+        title = concert.get('title', '').strip()
+        short_title = concert.get('short_title', '').strip()
+        date = concert.get('date', '')
+        time = concert.get('time', '')
+        price = concert.get('price', '')
+        show_id = concert.get('show_id', '')
+        seat_type = concert.get('seat_type', '')
+        is_sold_out = concert.get('is_sold_out', False)
 
         # Check if sold out
         is_sold_out = concert.get("notbybarbtsellsoldout", "0") == "1"
@@ -150,6 +151,7 @@ class BarbyConcertNotifier:
 
     def get_concert_image_url(self, concert):
         """Get image URL for concert"""
+        raw_data = concert.get('raw_data', {})
         show_image = concert.get("showImage", "")
         if show_image:
             clean_image = show_image.strip()
