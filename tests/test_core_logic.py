@@ -5,7 +5,7 @@ os.environ["TELEGRAM_BOT_TOKEN"] = "dummy_token_for_testing"  # Won't use it
 os.environ["REDIS_HOST"] = "localhost"
 os.environ["REDIS_PORT"] = "6379"
 
-from aws_lambda.lambda_function import lambda_handler
+from concert_checker import lambda_handler
 
 
 # Mock context

@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 load_dotenv()
 os.environ["REDIS_HOST"] = "localhost"  # Your local Redis
 
-from aws_lambda.lambda_function import BarbyConcertNotifier
+from concert_checker import BarbyConcertNotifier
 
 # Paste a REAL concert object from Barby API here:
 real_concert = {

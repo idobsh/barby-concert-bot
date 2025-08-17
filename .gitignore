@@ -17,3 +17,9 @@ venv/
 # IDE
 .vscode/
 .idea/
+# Build artifacts
+*.zip
+deployment/
+response.json
+*-policy.json
+

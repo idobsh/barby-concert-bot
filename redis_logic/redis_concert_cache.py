@@ -3,6 +3,9 @@ import redis
 import json
 from datetime import datetime
 from typing import Dict, Optional, Tuple
+from dotenv import load_dotenv
+load_dotenv()
+import os
 
 logging.basicConfig(
     level=logging.INFO,
@@ -18,10 +21,10 @@ logger = logging.getLogger(__name__)
 class RedisConcertCache:
     """Redis-based cache for concert state"""
 
-    def __init__(self, host="localhost", port=6379, db=0, password=None):
+    def __init__(self, host=None, port=6379, db=0, password=None):
         try:
             self.redis_client = redis.Redis(
-                host=host,
+                host=host or os.getenv('REDIS_HOST', 'localhost'),
                 port=port,
                 db=db,
                 password=password,
